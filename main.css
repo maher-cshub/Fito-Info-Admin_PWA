@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=League+Gothic&family=League+Spartan&family=Mukta&display=swap');
+
+/*general styles*/
+
+:root{
+
+    --font1: "League Gothic", "sans-serif";
+    --font2: "League Spartan", "sans-serif";
+    --font3:"Lato","sans-serif";
+    --font4:"Mukta","sans-serif";
+    --app-width: 100vw;
+    --app-height:100vh;
+    .light-theme{
+        --primary-color:#fafff1; 
+        --secondary-color-1:#e3fcb3;
+        --secondary-color-2: #8FBD4F;
+        --secondary-color-3: #054D3B;  
+        --secondary-color-4:var(--secondary-color-2);  
+    }
+    .dark-theme{
+        --primary-color:#241100;
+        --secondary-color-1: #e3fcb3;
+        --secondary-color-3: #8FBD4F;
+        --secondary-color-2: #054D3B; 
+        --secondary-color-4:var(--secondary-color-1);      
+    }
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+
+
+}
+
+body{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    background-color:#626262;
+    max-width: 0.4rem;
+}
+body::-webkit-scrollbar-thumb{
+    background:#8FBD4F;
+    border-radius: 10px;
+    cursor: pointer;
+}
+body::-webkit-scrollbar-thumb:hover{
+    background-color: #6c8e3d;
+}
+
+
+#app-ui{
+    display: block;
+    min-height: var(--app-height);
+    max-width: var(--app-width);
+    background-color: var(--primary-color);
+    box-sizing:border-box;
+    /*transition: all 0.5s ease-in-out;*/
+    
+}
+#nav-bar{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+   /* background-color: rgb(255, 183, 119);*/
+    
+}
+
+
+#logo{
+    height: 200px;
+    width: 100%;
+    padding-left: 40px;
+    user-select: none;
+}
+
+#theme-icon{
+    height: 30px !important;
+    width: 30px !important;
+    margin-right: 1rem;
+    cursor: pointer;
+    user-select: none;
+    /*background-color: yellow;*/
+}
+
+
+@media screen and (min-width: 50px) and (max-width: 251px){
+
+    #logo{
+        height: 80px;
+    }
+    #theme-icon{
+        scale: 0.6;
+    }
+}
+
+@media screen and (min-width:251px) and (max-width:320px){
+    #logo{
+        height: 100px;
+    }
+    #theme-icon{
+        scale: 0.6;
+    }
+}

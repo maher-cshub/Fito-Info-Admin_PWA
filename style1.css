@@ -1,0 +1,115 @@
+#content{
+    position: relative;
+    margin-top: 100px;
+    padding-bottom: calc(2rem + 1vh);
+    display: flex;
+    flex-direction: column;
+}
+
+#sign-in-up_form{
+    position: relative;
+    margin:0 auto;
+    width: 50%;
+    max-width: 500px;
+    min-width: 200px;
+    height: 500px;
+}
+
+#sign-up, #sign-in{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    background-color: var(--secondary-color-3);
+    border-radius: 10px;
+}
+
+#sign-up{
+    height: 100%;
+    visibility: visible;
+
+}
+
+#sign-in{
+    height: 80%;
+    visibility: hidden;
+
+}
+
+#sign-up-title, #sign-in-title{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.form-group *,.form-actions :not(a){
+    display: block;
+    width: 100%;
+    color: var(--secondary-color-2);
+    font-family:var(--font2)
+}
+
+.form-actions a{
+    color: var(--primary-color);
+    font-weight: 900;
+}
+
+#sign-in-up_form h2{
+    font-size:2rem;
+    font-weight:medium;
+    color:var(--secondary-color-2);
+    font-family: var(--font2);
+}
+
+#sign-in-up_form label{
+    font-size: larger;
+    font-weight: 550;
+    font-family: var(--font2);
+    margin-bottom: 0.3rem;
+    color: var(--secondary-color-2);
+}
+
+#sign-in-up_form input{
+    height: 40px;
+    margin-bottom: 0.8rem;
+    outline: none;
+    border-radius: 10px;
+    border: solid 3px var(--secondary-color-2);
+    padding-left: 10px;
+    background-color: var(--secondary-color-3);
+    color: var(--secondary-color-2); 
+    font-weight: 800;
+    font-size: 1em;
+}
+
+
+
+#sign-in-up_form input:focus{
+    border:solid 3px var(--secondary-color-1);
+}
+
+#sign-in-up_form button{
+    height: 50px;
+    font-size: x-large;
+    font-family: var(--font2);
+    font-weight: 800;
+    background-color: var(--secondary-color-2);
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    color: var(--secondary-color-3);
+    cursor: pointer;
+
+}
+
+#sign-in-up_form button:hover{
+    background-color: var(--secondary-color-1);
+    box-shadow: var(--secondary-color-1) 0px 0px 20px;
+}
+
+#sign-in .form-actions :nth-child(3){
+    margin-top: 1rem;
+}
