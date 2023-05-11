@@ -70,7 +70,7 @@
     font-weight: 550;
     font-family: var(--font2);
     margin-bottom: 0.3rem;
-    color: var(--secondary-color-2);
+    color: var(--primary-color);
 }
 
 #sign-in-up_form input{
@@ -99,7 +99,7 @@
     font-weight: 800;
     background-color: var(--secondary-color-2);
     margin-bottom: 1rem;
-    border-radius: 20px;
+    border-radius: 10px;
     color: var(--secondary-color-3);
     cursor: pointer;
 

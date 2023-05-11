@@ -1,5 +1,5 @@
-const sign_up_link = document.querySelector("#sign-up > div.form-actions > p > a");
-const sign_in_link = document.querySelector("#sign-in > div.form-actions > p:nth-child(3) > a");
+const sign_up_link = document.querySelector("#sign-up > form > div.form-actions > p > a");
+const sign_in_link = document.querySelector("#sign-in > form > div.form-actions > p:nth-child(3) > a");
 
 sign_in_link.addEventListener("click",Enableform);
 sign_up_link.addEventListener("click",Enableform);
