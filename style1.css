@@ -102,12 +102,13 @@
     border-radius: 10px;
     color: var(--secondary-color-3);
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 
 }
 
 #sign-in-up_form button:hover{
     background-color: var(--secondary-color-1);
-    box-shadow: var(--secondary-color-1) 0px 0px 20px;
+    box-shadow: var(--secondary-color-1) 0px 0px 30px;
 }
 
 #sign-in .form-actions :nth-child(3){
