@@ -27,13 +27,13 @@
 
 #sign-up{
     height: 100%;
-    visibility: visible;
+    visibility: hidden;
 
 }
 
 #sign-in{
     height: 80%;
-    visibility: hidden;
+    visibility: visible;
 
 }
 
