@@ -1,13 +1,21 @@
+
 import firebase_app from "./util.js"
 import {getDatabase , ref , get , set, push ,update,child,remove,onValue,onChildAdded,onChildRemoved,onChildChanged} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 import { initVars } from "./script4.js";
 
-const results_area = document.getElementById("results-area");
 
 const database = getDatabase(firebase_app);
 const items_ref = await ref(database,"items");
-document.addEventListener("DOMContentLoaded",refreshData);
 
+const results_area = document.getElementById("results-area");
+const add_btn = document.getElementById("add-btn");
+document.addEventListener("DOMContentLoaded",refreshData);
+add_btn.addEventListener("click",addItem);
+
+
+function addItem(){
+    window.location.href = "add.html";
+}
 function saveElement(element){
     const item = document.createElement("div")
     item.setAttribute("id","item");
@@ -19,6 +27,9 @@ function saveElement(element){
         <div id="item-details">
             <h1 id="item-title">${element[1]["name"]}</h1>
             <button class="info-btn-cls" id="item-info-btn">GET INFO</button>
+            <button class="update-btn-cls" id="item-update-btn">UPDATE</buton>
+            <button class="delete-btn-cls" id="item-delete-btn">DELETE</buton>
+
         </div>
     `
     
@@ -38,7 +49,7 @@ async function getAllItems(){
             }
         });
     } catch (error) {
-        
+        alert("please check your internet connection")
     }
 }
 
@@ -83,11 +94,14 @@ onChildAdded(items_ref,(snapshot)=>{
 //--------------------item removed (done)
 onChildRemoved(items_ref,(snapshot)=>{
     const deleted_item = document.querySelector(`[item_id="${snapshot.key}"]`);
-    deleted_item.remove()
+    deleted_item.remove();
+    let items = JSON.parse(localStorage.getItem("items"));
+    items = items.filter(item => !(item[0] == snapshot.key));
+    localStorage.setItem("items",items);
 })
 
 
 setInterval(()=>{
     localStorage.removeItem("items");
     refreshData()
-},60000)
+},10000)

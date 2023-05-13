@@ -1,6 +1,11 @@
+import firebase_app from "./util.js";
+import {getDatabase,ref,remove,update} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
 let user_search_input = document.getElementById("user-search-input");
 
 let info_btns = null;
+let update_btns = null;
+let delete_btns = null;
 
 
 //events
@@ -10,8 +15,16 @@ user_search_input.oninput = search_items;
 
 function initVars(){
     info_btns = document.querySelectorAll("#item-info-btn");
+    update_btns = document.querySelectorAll("#item-update-btn");
+    delete_btns = document.querySelectorAll("#item-delete-btn");
     info_btns.forEach(button =>{
         button.addEventListener("click",getInfo);
+    })
+    update_btns.forEach(button =>{
+        button.addEventListener("click",updateItem);
+    })
+    delete_btns.forEach(button =>{
+        button.addEventListener("click",deleteItem);
     })
     return
 }
@@ -38,15 +51,28 @@ function getInfo(e){
     //get item id 
     const chosen_item = e.target.offsetParent.parentElement;
     console.log(chosen_item)
-    let item_object = {}
-    item_object["item_id"] = chosen_item.getAttribute("item_id")
-    item_object["item_image"] = chosen_item.querySelector("#item-image > img").getAttribute("src")
-    item_object["item_name"] = chosen_item.querySelector("#item-title").innerText
-        /*image and name
-    */
-    localStorage.setItem("selected_item",JSON.stringify(item_object))
+    let item_id = chosen_item.getAttribute("item_id")
+    localStorage.setItem("selected_item_to_preview",item_id)
     window.location.href = "details.html"
 }
+
+function updateItem(evt){
+    let chosen_item = evt.target.offsetParent.parentElement;
+    let item_object = {}
+    item_object["item_id"] = chosen_item.getAttribute("item_id")
+    //update in firebase
+}
+
+
+function deleteItem(evt){
+    let chosen_item = evt.target.offsetParent.parentElement;
+    let item_id= chosen_item.getAttribute("item_id")
+    //delete from firebase
+    const database = getDatabase(firebase_app);
+    const item_ref = ref(database,"items/"+item_id);
+    remove(item_ref)
+}
+
 
 initVars()
 

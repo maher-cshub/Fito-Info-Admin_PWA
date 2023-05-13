@@ -123,7 +123,8 @@ async function SignIn(evt){
       if (user.emailVerified == true){
         const database = getDatabase(firebase_app)
         const usernames_ref = ref(database,"users/usernames");
-        //const verified_user = {`${user.uid}`:}
+        const verified_user =user.uid;
+        localStorage.setItem("currentUser",verified_user);
 
         window.location.href = "./user.html";
       }

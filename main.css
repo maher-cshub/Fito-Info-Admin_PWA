@@ -10,19 +10,30 @@
     --font4:"Mukta","sans-serif";
     --app-width: 100vw;
     --app-height:100vh;
+    --red-color1:hsla(0, 74%, 55%, 0.841);
+    --red-color2:hsl(0, 74%, 55%);
+    --red-color3:hsl(0, 100%, 92%);
+    --blue-color1:hsla(209, 100%, 50%, 0.708);
+    --blue-color2:hsla(209, 100%, 50%, 0.948);
+    --blue-color3:hsl(210, 100%, 92%);
+    --orange-color1:hsl(25, 100%, 74%);
+    --orange-color2:hsl(25, 97%, 55%);
+    --orange-color3:hsl(25, 100%, 90%);
     .light-theme{
         --primary-color:#fafff1; 
         --secondary-color-1:#e3fcb3;
         --secondary-color-2: #8FBD4F;
         --secondary-color-3: #054D3B;  
         --secondary-color-4:var(--secondary-color-2);  
+        --opposite-color:#241100;
     }
     .dark-theme{
         --primary-color:#241100;
         --secondary-color-1: #e3fcb3;
         --secondary-color-3: #8FBD4F;
         --secondary-color-2: #054D3B; 
-        --secondary-color-4:var(--secondary-color-1);      
+        --secondary-color-4:var(--secondary-color-1);  
+        --opposite-color:#fafff1;   
     }
 
 }
