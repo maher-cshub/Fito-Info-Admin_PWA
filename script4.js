@@ -58,9 +58,10 @@ function getInfo(e){
 
 function updateItem(evt){
     let chosen_item = evt.target.offsetParent.parentElement;
-    let item_object = {}
-    item_object["item_id"] = chosen_item.getAttribute("item_id")
+    let item_id= chosen_item.getAttribute("item_id")
     //update in firebase
+    localStorage.setItem("selected_item_to_update",item_id)
+    window.location.href = "update.html"
 }
 
 
@@ -71,6 +72,7 @@ function deleteItem(evt){
     const database = getDatabase(firebase_app);
     const item_ref = ref(database,"items/"+item_id);
     remove(item_ref)
+    alert("Item Removed Successfully")
 }
 
 

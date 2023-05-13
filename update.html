@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fito Info</title>
+    <script src="authGuard.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+<body class="light-theme">
+    <section id="app-ui" >
+        <!--NAV BAR-->
+        <nav id="nav-bar">
+            <img id="logo" src="/assets/logo.svg" alt="logo">
+            <img id="theme-icon" src="/assets/moon.svg" alt=""> 
+        </nav>
+        <section id="content">
+            <div id="item-info">
+                <div>
+                    <span>Item Title: </span>
+                    <input type="text" id="item-title">
+                </div>
+                <div>
+                    <span>Item Image: </span>
+                    <input type="url" id="item-image">
+                </div>
+            </div>
+            <div id="chapter-info">
+                <div>
+                    <span>Chapter name :</span>
+                    <input id="chapter-name" type="text">
+                </div>
+            </div>
+            <div id="wrapper" id="default">
+                <textarea id="default"></textarea>
+            </div>
+            
+            <button id="update-btn">SAVE DOCUMENT</button>
+            
+        </section>
+    </section>
+    <script src="theme.js"></script>
+    <script src="script7.js" type="module"></script>
+    <script src="tinymce/tinymce.min.js"></script>
+
+</body>
+</html>

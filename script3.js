@@ -5,7 +5,6 @@ import { initVars } from "./script4.js";
 
 
 const database = getDatabase(firebase_app);
-const items_ref = await ref(database,"items");
 
 const results_area = document.getElementById("results-area");
 const add_btn = document.getElementById("add-btn");
@@ -39,12 +38,15 @@ function saveElement(element){
 
 async function getAllItems(){
     try {  
+        const items_ref = ref(database,"items");
         await onValue(items_ref,function(snapshot){
             if (snapshot.exists()){
                 let items = Object.entries(snapshot.val())
+                localStorage.removeItem("items");
                 localStorage.setItem("items",JSON.stringify(items))
             }
             else{
+                localStorage.removeItem("items");
                 localStorage.setItem("items",JSON.stringify([]))
             }
         });
@@ -54,13 +56,14 @@ async function getAllItems(){
 }
 
 
-function refreshData(){
+async function refreshData(){
+    
     results_area.innerHTML = "";
-    let items =  JSON.parse(localStorage.getItem("items"));
-    if (items == null || items == undefined){
-        getAllItems(); 
-    }
-    items = JSON.parse(localStorage.getItem("items"));
+    
+    await getAllItems(); 
+
+    let items = JSON.parse(localStorage.getItem("items"));
+
     if (items.length > 0){
         items.forEach(element => {
             saveElement(element);
@@ -72,7 +75,8 @@ function refreshData(){
 }
 
 
-onChildAdded(items_ref,(snapshot)=>{
+onChildAdded(ref(database,"items"),(snapshot)=>{
+    
     let items =  JSON.parse(localStorage.getItem("items"));
     if (items == null || items == undefined)
     {
@@ -85,14 +89,14 @@ onChildAdded(items_ref,(snapshot)=>{
         return element[1]["name"] == snapshot.val()["name"]
     })
     if (exist == false){
-        localStorage.removeItem("items");
         refreshData()
+        return
     }
 })
 
 
 //--------------------item removed (done)
-onChildRemoved(items_ref,(snapshot)=>{
+onChildRemoved(ref(database,"items"),(snapshot)=>{
     const deleted_item = document.querySelector(`[item_id="${snapshot.key}"]`);
     deleted_item.remove();
     let items = JSON.parse(localStorage.getItem("items"));
@@ -103,5 +107,6 @@ onChildRemoved(items_ref,(snapshot)=>{
 
 setInterval(()=>{
     localStorage.removeItem("items");
+    console.log("jjj")
     refreshData()
-},10000)
+},600000)
