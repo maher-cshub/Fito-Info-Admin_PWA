@@ -1,0 +1,108 @@
+#content-area{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 100px auto 0 auto;
+    padding-bottom: calc(2rem + 1vh);
+}
+
+
+
+
+
+#item-image{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+#item-image img{
+    position:relative;
+    display: inline-block;
+    height: 50vw;
+    width: 50vw;
+    max-height: 400px;
+    max-width: 400px;
+    border-radius: 50% 50%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+#item-image span{
+    display: block;
+    font-family: var(--font2);
+    font-weight: 600;
+    font-size: calc(3rem + 2vw);
+    color: var(--secondary-color-3);
+    word-wrap: break-word;
+
+}
+
+.collapsible {
+    background-color: var(--secondary-color-3);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: calc(1rem + 2vw);
+    word-wrap: break-word;
+    
+  }
+  
+  .active, .collapsible:hover {
+    background-color: var(--secondary-color-2);
+
+  }
+
+  .content {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    background-color: #ffffff;
+    /*overflow-y: scroll;*/
+    overflow-wrap: break-word;
+    
+  }
+
+  .active-content{
+    border: solid 2px var(--secondary-color-2);
+    border-top: none;
+  }
+  
+
+/*
+  .content > iframe ::-webkit-scrollbar{
+    background-color: rgb(255, 255, 255);
+    width: 0.7rem;
+  } 
+
+  .content::-webkit-scrollbar-thumb{
+    background-color: var(--secondary-color-3);
+  }
+
+  .content::-webkit-scrollbar-thumb:hover{
+    background-color: var(--secondary-color-2);
+  }*/
+
+  .content img{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: solid 2px var(--secondary-color-3);
+    margin: 2rem auto;
+  }
+
+  .content iframe{
+    overflow-y: scroll;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    height: 70vh;
+  }

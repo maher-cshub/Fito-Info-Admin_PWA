@@ -1,6 +1,6 @@
 import firebase_app from "../util.js"
-import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword,updateProfile, sendEmailVerification, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-import {getDatabase , ref , get , set ,push, update , remove , child} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+import {getDatabase , ref , get , set} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 import { validatePassword , validateEmail, validateUserName} from "./validation.js";
 
 
@@ -29,7 +29,6 @@ async function SignUp(evt){
     const database = getDatabase(firebase_app)
     const usernames_ref = ref(database,"users/usernames");
     const check = await get(usernames_ref)
-    console.log(check)
     let usernames = null;
     if(check.size == 0)
     {
@@ -38,7 +37,6 @@ async function SignUp(evt){
     else{
         usernames =   Object.values(check.val());
     }
-    console.log(usernames)
     if (isEmpty(username) || isEmpty(email) || isEmpty(password) || isEmpty(confirmpassword)){
         alert("please fill all fileds !")
         return
@@ -87,7 +85,6 @@ async function SignUp(evt){
 
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode)
         if (errorCode == "auth/email-already-in-use"){
             alert("Email already taken ,please use another email !")
         }
@@ -126,10 +123,9 @@ async function SignIn(evt){
       if (user.emailVerified == true){
         const database = getDatabase(firebase_app)
         const usernames_ref = ref(database,"users/usernames");
-        console.log(user)
         //const verified_user = {`${user.uid}`:}
 
-        //window.location.href = "./user.html";
+        window.location.href = "./user.html";
       }
       else{
         alert("please verify your email to log in !")
