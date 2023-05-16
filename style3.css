@@ -52,7 +52,24 @@
     outline: none;
     font-size: calc(1rem + 2vw);
     word-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     
+  }
+
+  .collapsible button{
+    font-size: calc(0.5rem + 0.5vw);
+    font-weight: 800;
+    word-wrap: break-word;
+    background-color: var(--red-color1);
+    border-radius: 10px;
+    cursor:pointer;
+    color: white;
+  }
+
+  .collapsible button:hover{
+    background-color:  var(--red-color2);
   }
   
   .active, .collapsible:hover {

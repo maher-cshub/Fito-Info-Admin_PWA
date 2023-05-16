@@ -35,7 +35,6 @@ function search_items(e){
     let input = String(e.srcElement.value);
     let items = Array.from(all_items.children);
     items.forEach(element => {
-        console.log(element.children[1].childNodes[1].innerText)
         if(String(element.children[1].childNodes[1].innerText).trim().toLowerCase().startsWith(input.trim().toLowerCase())){
             element.style.removeProperty("display");
         }
@@ -50,7 +49,6 @@ function search_items(e){
 function getInfo(e){
     //get item id 
     const chosen_item = e.target.offsetParent.parentElement;
-    console.log(chosen_item)
     let item_id = chosen_item.getAttribute("item_id")
     localStorage.setItem("selected_item_to_preview",item_id)
     window.location.href = "details.html"

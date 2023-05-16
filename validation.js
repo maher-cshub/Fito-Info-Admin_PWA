@@ -11,7 +11,6 @@ function validateEmail(email){
 
 
 function validateUserName(username){
-    console.log(username)
     let check = username.length > 2 && username.length < 16;
     return check;
 }

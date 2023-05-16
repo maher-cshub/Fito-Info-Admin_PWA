@@ -107,6 +107,7 @@ onChildRemoved(ref(database,"items"),(snapshot)=>{
 
 setInterval(()=>{
     localStorage.removeItem("items");
-    console.log("jjj")
     refreshData()
-},600000)
+},60000)
+
+refreshData()

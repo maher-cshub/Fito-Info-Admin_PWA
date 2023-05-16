@@ -1,8 +1,8 @@
 import firebase_app from "./util.js";
-import {getDatabase,ref,get} from  "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import {getDatabase,ref,get,remove} from  "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 
 let item_image = document.querySelector("#item-image");
-let current_page = document.getElementsByTagName("html");
+
 
 function updateDOM(){
   var coll = document.getElementsByClassName("collapsible");
@@ -19,7 +19,22 @@ function updateDOM(){
       content.classList.toggle("active-content");
     });
   }
-  
+  var delete_btns = document.getElementsByClassName("delete_btn");
+  for (let i = 0; i < delete_btns.length; i++) {
+    delete_btns[i].addEventListener("click", function(e){
+      let target_id = localStorage.getItem("selected_item_to_preview");
+      e.preventDefault();
+      var item_id = this.getAttribute("id")
+      let database = getDatabase(firebase_app);
+      let item_ref = ref(database,`items/${target_id}/infos/${item_id}`)
+      remove(item_ref)
+      e.target.parentNode.remove()
+      alert(`${item_id} Removed Successfully`);
+
+  })
+}
+
+
 }
 
 function setContent(items){
@@ -30,16 +45,15 @@ function setContent(items){
     const div2 = document.createElement("div");
     div1.setAttribute("class","collapsible");
     div2.setAttribute("class","content");
-    div1.innerHTML = `${info[0]}`
+    div1.innerHTML = `<span>${info[0]}</span><button class="delete_btn" id="${info[0]}">DELETE</button>`
     div2.innerHTML = `<iframe srcdoc='${info[1]}' frameborder="0"></iframe>`
     contentarea.appendChild(div1);
     contentarea.appendChild(div2);
-    console.log(info)
   });
 }
 
 function LoadPage(){
-  current_page[0].style.opacity = 0;
+  //current_page[0].style.opacity = 0;
   const database = getDatabase(firebase_app);
   let target_id = localStorage.getItem("selected_item_to_preview");
   const target_ref = ref(database,`items/${target_id}`);
@@ -47,12 +61,21 @@ function LoadPage(){
   .then((snapshot)=>{
     let item = snapshot.val()
     item_image.querySelector("img").setAttribute("src",item["image"])
+    item_image.querySelector("img").setAttribute("onerror","this.src='/blank.jpg'")
     item_image.querySelector("span").innerText = item["name"];
-    setContent(item["infos"])
+    if (item["infos"] != null || item["infos"] != undefined)
+    {
+      setContent(item["infos"])
+    }
     updateDOM()
-    current_page[0].style.opacity = 1;
+    
+
+
+    //current_page[0].style.opacity = 1;
     
   })
+   
+
 
   .catch((error) => {
   })
@@ -60,6 +83,12 @@ function LoadPage(){
   
 }
 
+
 document.addEventListener("DOMContentLoaded", e =>{
   LoadPage()
+  const loader = document.querySelector(".loader-active");
+  loader.classList.add("loader-hidden")
+  loader.addEventListener("transistioned",()=>{
+    loader.remove()
+  })
 })

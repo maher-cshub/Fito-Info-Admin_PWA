@@ -124,7 +124,8 @@ async function SignIn(evt){
         const database = getDatabase(firebase_app)
         const usernames_ref = ref(database,"users/usernames");
         const verified_user =user.uid;
-        localStorage.setItem("currentUser",verified_user);
+        sessionStorage.setItem("currentUser",verified_user);
+        //localStorage.setItem("currentUser",verified_user);
 
         window.location.href = "./user.html";
       }

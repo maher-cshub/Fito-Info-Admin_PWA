@@ -22,7 +22,6 @@ confirm_password.oninput = checkConfirmPassword;
 
 function Enableform(evt){
     let target = evt.target.x;
-    console.log(target)
     if (target == "sign_in"){
         document.getElementById("sign-up").style.visibility = "hidden";
         document.getElementById("sign-in").style.visibility = "visible";

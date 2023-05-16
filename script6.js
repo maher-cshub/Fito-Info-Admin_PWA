@@ -26,39 +26,55 @@ save_btn.addEventListener("click",Save);
 function setUpperCase(){
     chapter_name_field.value = chapter_name_field.value.toUpperCase();
 }
+
 function validateInputs(item){
-    if (item.length <= 0 ){
+    if (item["item_name"].length <= 0 || item["item_image"].length <=0){
         return false;
     }
     else{
-        return true;
+        if ((item["chapter_name"].length > 0 && item["chapter_content"].length <=0) || (item["chapter_name"].length <= 0 && item["chapter_content"].length >0)){
+            return false
+        }
+        else
+        {
+            return true   
+        }
+
     }
 }
 
 function Save(){
-    const item_name = document.getElementById("item-title").value;
-    const item_image = document.getElementById("item-image").value;
-    const chapter_name = document.getElementById("chapter-name").value;
-    const chapter_content = tinymce.get("default").getContent();
+    const item_data = {
+        item_name: document.getElementById("item-title").value,
+        item_image: document.getElementById("item-image").value,
+        chapter_name: document.getElementById("chapter-name").value,
+        chapter_content: tinymce.get("default").getContent()
+    }
     const database = getDatabase(firebase_app);
     const item_ref = ref(database,"items");
-    if (validateInputs(item_image) && validateInputs(item_name) && validateInputs(chapter_name) && validateInputs(chapter_content)){
+    if (validateInputs(item_data)){
         //save to fb
         const date_update =  new Date().toLocaleDateString();
         const time_update =  new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
         const user_uid = localStorage.getItem("currentUser");
-        const infos= {[chapter_name]:chapter_content};
+        let infos = {};
+        if (item_data["chapter_name"].length > 0){
+            infos= {[item_data["chapter_name"]]:item_data["chapter_content"]};
+        }
         const last_updated = {user_uid:user_uid,time:time_update,date:date_update}
-        const item = {name:item_name,image:item_image,infos:infos,last_updated:last_updated};
+        let item = {name:item_data["item_name"],image:item_data["item_image"],last_updated:last_updated}
+        if (infos != {}){
+            item["infos"] = infos
+        }
         get(item_ref)
         .then((snapshot) =>{
             if (snapshot.exists()){
                 let all_items = Object.values(snapshot.val())
                 let exist = all_items.some((element) =>{
-                    return element["name"].toLowerCase().trim() == item_name.toLowerCase().trim()
+                    return element["name"].toLowerCase().trim() == item["name"].toLowerCase().trim()
                 })
                 if (exist){
-                    alert(`Item (${item_name}) already exisited !`)
+                    alert(`Item (${item["name"]}) already exisited !`)
                     return
                 }
                 else{
@@ -82,7 +98,7 @@ function Save(){
         })
     }
     else{
-        alert("please fill all fields !!!");
+        alert("please fill all required fields !!!");
         return
     }
 
