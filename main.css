@@ -168,6 +168,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 0.2rem;
+    font-family: var(--font2);
   }
 
 footer p{
@@ -178,7 +179,7 @@ footer p a{
     text-decoration: dashed;
     color: var(--primary-color);
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 @keyframes loading {
     from{

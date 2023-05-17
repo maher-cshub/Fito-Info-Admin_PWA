@@ -1,5 +1,5 @@
 import firebase_app from "./util.js";
-import {getDatabase,ref,remove,update} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import {getDatabase,ref,remove} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 
 let user_search_input = document.getElementById("user-search-input");
 

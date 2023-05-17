@@ -1,4 +1,4 @@
-import {getDatabase,ref,push,get,set} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import {getDatabase,ref,push,get} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 import firebase_app from "./util.js";
 
 tinymce.init({

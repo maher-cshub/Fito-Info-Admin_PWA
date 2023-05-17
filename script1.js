@@ -1,13 +1,13 @@
 import {validatePassword,validateUserName} from "./validation.js"
 import firebase_app from "./util.js";
-import {getDatabase , ref , onValue , get,push , set , update , remove , child} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import {getDatabase , ref , get} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 const sign_up_link = document.querySelector("#sign-up > form > div.form-actions > p > a");
 const sign_in_link = document.querySelector("#sign-in > form > div.form-actions > p:nth-child(3) > a");
 const sign_up_username = document.getElementById("sign-up-username");
 const sign_up_password = document.getElementById("sign-up-password");
 const sign_in_password = document.getElementById("sign-in-password");
 const confirm_password = document.getElementById("confirm-password");
-let valid_form = false;
+
 sign_in_link.x = "sign_up";
 sign_up_link.x = "sign_in";
 sign_in_password.x = "sign_in";

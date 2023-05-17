@@ -1,6 +1,6 @@
 
 import firebase_app from "./util.js"
-import {getDatabase , ref , get , set, push ,update,child,remove,onValue,onChildAdded,onChildRemoved,onChildChanged} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import {getDatabase , ref ,onValue,onChildAdded,onChildRemoved} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 import { initVars } from "./script4.js";
 
 

@@ -1,7 +1,5 @@
-import {getDatabase,ref,push,get,update,child} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import {getDatabase,ref,get,update} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 import firebase_app from "./util.js";
-
-let current_page = document.getElementsByTagName("html");
 
 let chapter_name = document.getElementById("chapter-name");
 
