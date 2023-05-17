@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: 100px auto 0 auto;
-    padding-bottom: calc(2rem + 1vh);
+    margin: 100px auto;
+    padding-bottom: calc(2rem + 5vh);
+    min-height: 50%;
 }
 
 

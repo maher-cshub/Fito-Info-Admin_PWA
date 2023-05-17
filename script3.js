@@ -89,6 +89,7 @@ onChildAdded(ref(database,"items"),(snapshot)=>{
         return element[1]["name"] == snapshot.val()["name"]
     })
     if (exist == false){
+        localStorage.removeItem("items");
         refreshData()
         return
     }
