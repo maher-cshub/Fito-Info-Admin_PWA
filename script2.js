@@ -77,7 +77,7 @@ async function SignUp(evt){
         let new_user = {[user.uid]:username};
         set(usernames_ref,new_user)
         sendEmailVerification(user);
-
+        alert("Sign Up Successful ,please verify your email address ,so you can log in !")
 
         
         // ...
